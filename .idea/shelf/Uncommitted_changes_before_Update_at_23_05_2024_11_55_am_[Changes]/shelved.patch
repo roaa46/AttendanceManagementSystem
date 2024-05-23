@@ -1,0 +1,107 @@
+Index: AttendanceManagementSystem.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\" inherit-compiler-output=\"true\">\r\n    <exclude-output />\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src\" isTestSource=\"false\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AttendanceManagementSystem.iml b/AttendanceManagementSystem.iml
+--- a/AttendanceManagementSystem.iml	(revision ba8de7f9a75ee07cb687d4024547a03aca42742a)
++++ b/AttendanceManagementSystem.iml	(date 1716395371515)
+@@ -7,5 +7,14 @@
+     </content>
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="module-library">
++      <library>
++        <CLASSES>
++          <root url="jar://$MODULE_DIR$/lib/mysql-connector-j-8.4.0.jar!/" />
++        </CLASSES>
++        <JAVADOC />
++        <SOURCES />
++      </library>
++    </orderEntry>
+   </component>
+ </module>
+\ No newline at end of file
+Index: src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Main {\r\n    public static void main(String[] args) {\r\n        System.out.println(\"Hello world!\");\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Main.java b/src/Main.java
+--- a/src/Main.java	(revision ba8de7f9a75ee07cb687d4024547a03aca42742a)
++++ b/src/Main.java	(date 1716396859281)
+@@ -1,5 +1,67 @@
++import Attendance.Management.System.AddStudent;
++import Attendance.Management.System.ViewStudents;
++import Attendance.Management.System.DeleteStudent;
++import Attendance.Management.System.SearchStudent;
++
++import javax.swing.*;
++import java.awt.*;
++import java.awt.event.ActionEvent;
++import java.awt.event.ActionListener;
++
+ public class Main {
+     public static void main(String[] args) {
+-        System.out.println("Hello world!");
++        JFrame frame = new JFrame("Attendance Management System");
++        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
++        frame.setSize(500, 400);
++
++        // Calculate the x-coordinate for centering buttons
++        int buttonWidth = 200;
++        int x = (frame.getWidth() - buttonWidth) / 2;
++
++        // Create buttons
++        JButton addStudentButton = new JButton("Add Student");
++        JButton viewStudentsButton = new JButton("View Students");
++        JButton deleteStudentButton = new JButton("Delete Student");
++        JButton searchStudentButton = new JButton("Search Student");
++
++        // Set bounds for buttons based on centering calculations
++        addStudentButton.setBounds(x, 50, buttonWidth, 35);
++        viewStudentsButton.setBounds(x, 100, buttonWidth, 35);
++        deleteStudentButton.setBounds(x, 150, buttonWidth, 35);
++        searchStudentButton.setBounds(x, 200, buttonWidth, 35);
++
++        // Add buttons to the frame
++        frame.add(addStudentButton);
++        frame.add(viewStudentsButton);
++        frame.add(deleteStudentButton);
++        frame.add(searchStudentButton);
++
++        frame.setLayout(null); // Use null layout for absolute positioning
++        frame.setVisible(true);
++
++        // Button actions...
++        addStudentButton.addActionListener(new ActionListener() {
++            public void actionPerformed(ActionEvent e) {
++                new AddStudent();
++            }
++        });
++
++        viewStudentsButton.addActionListener(new ActionListener() {
++            public void actionPerformed(ActionEvent e) {
++                new ViewStudents();
++            }
++        });
++
++        deleteStudentButton.addActionListener(new ActionListener() {
++            public void actionPerformed(ActionEvent e) {
++                new DeleteStudent();
++            }
++        });
++
++        searchStudentButton.addActionListener(new ActionListener() {
++            public void actionPerformed(ActionEvent e) {
++                new SearchStudent();
++            }
++        });
+     }
+-}
+\ No newline at end of file
++}
