@@ -1,0 +1,10 @@
+CREATE DATABASE students;
+
+USE students;
+
+CREATE TABLE studentDetails (
+    name VARCHAR(50),
+    id VARCHAR(20) PRIMARY KEY,
+    section VARCHAR(20),
+    status VARCHAR(10)
+);
