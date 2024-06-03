@@ -1,26 +1,47 @@
 # Attendance Management System
 
-The Attendance Management System is a Java application designed to facilitate the management of student attendance records. It provides functionalities such as adding new students, viewing existing student records, searching for students, and deleting student records. The system utilizes a MySQL database to store student information.
+This is a Java-based Attendance Management System designed to manage student records and their attendance status. The system provides functionalities to add, view, delete, search students, and also to add and view student reports.
 
 ## Features
+- **Add Student:** Add new students to the system along with their details like name, ID, section, and attendance status.
+- **View Students:** View and print the list of all students along with their details.
+- **Delete Student:** Remove a student from the system using their ID.
+- **Search Student:** Search for a student using their ID and view their details.
+- **Student Report:** Add, view and print reports for individual students.
 
-- Add Student: Allows users to add new student records to the system by providing the student's name, ID, section, and attendance status.
-- View Students: Displays a list of all existing student records in the system.
-- Search Student: Enables users to search for a specific student by their ID and view their details.
-- Delete Student: Allows users to delete a student record from the system by providing the student's ID.
+## Installation
+1. Ensure you have Java Development Kit (JDK) installed on your system.
+2. Clone or download the project files from the repository.
+3. Compile the Java files using `javac Main.java` command.
+4. Run the application using `java Main` command.
 
-## Technologies Used
+## Usage
+- Upon running the application, the main menu will appear.
+- From the main menu, you can choose different options to perform various tasks related to student management.
+- Each option leads to a different functionality:
+    - **Add Student:** Allows you to add new students to the system.
+    - **View Students:** Displays the list of all students with their details.
+    - **Delete Student:** Lets you remove a student from the system.
+    - **Search Student:** Enables you to search for a student using their ID.
+    - **Student Report:** Provides functionality to add and view reports for individual students.
+    - **Exit:** Closes the application.
 
-- Java: The application is developed using the Java programming language.
-- Swing: Java's Swing framework is used for building the graphical user interface (GUI) components.
-- MySQL: The MySQL database is used to store and manage student records.
-- JDBC: Java Database Connectivity (JDBC) is used to interact with the MySQL database from the Java application.
+## SQL script to create the database
 
-## How to Run
+```sql
+-- Create database if not exists
+CREATE DATABASE IF NOT EXISTS students;
 
-1. Ensure you have Java Development Kit (JDK) and MySQL installed on your system.
-2. Clone the repository to your local machine.
-3. Set up the MySQL database by importing the provided schema and sample data.
-4. Compile the Java source files using the Java compiler (`javac`).
-5. Run the Main class to launch the application.
-6. Follow the on-screen instructions to navigate through the application and manage student records.
+-- Use the database
+USE students;
+
+-- Create studentDetails table
+CREATE TABLE IF NOT EXISTS studentdetails (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    section VARCHAR(10) NOT NULL,
+    status ENUM('Present', 'Absent') NOT NULL,
+    report VARCHAR(255) NOT NULL
+);
+
+```
